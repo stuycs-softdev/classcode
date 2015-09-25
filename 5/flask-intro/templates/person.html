@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<h1>Person Page</h1>
+<h2>last: {{d.last}}</h2>
+<h2>first: {{d['first']}}</h2>
+<hr>
+<h3>Title: {{d.title}}</h3>
+<hr>
+<h1>{{d.error}}</h1>
+{{d}}
+<hr>
+<ol>
+	{% for item in d %}
+	<li>{{item}}</li>
+	{% endfor %}
+</ol>
+
+<hr>
+{{list}}
+<hr>
+{% for item in list %}
+{{item}}<p>
+	{% endfor %}
