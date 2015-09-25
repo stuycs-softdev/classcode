@@ -6,14 +6,27 @@ app = Flask(__name__)
 @app.route("/lucky")
 def lucky():
     import random
-    number = random.randrange(1,100)
-    return "<h1>Lucky number: %d</h1"%(number)
+    r = random.randrange(1,100)
+    return render_template("lucky.html",number=r)
 
+
+@app.route("/p")
+@app.route("/p/")
+@app.route("/p/<lastname>")
+@app.route("/p/<lastname>/<firstname>")
+def person(lastname="",firstname=""):
+    
+    d = {"last":lastname,
+         'first':firstname}
+    d['title']="Grand Poobah"
+    l=[10,"twenty",30,"forty"]
+    return render_template("person.html",d = d, l = l)
 
 @app.route("/about")
 def about():
     return render_template("about.html")
-    
+
+
 @app.route("/oldabout")
 def oldabout():
     page="""
@@ -30,7 +43,11 @@ def oldabout():
 @app.route("/")
 @app.route("/home")
 def home():
-    return "<h1>Hello World</h1><h2>main page</h2"
+    page = """
+    <h1>Hello World</h1><h2>main page</h2>
+<button><a href="/about">About</a></button>
+"""
+    return page
 
 if __name__=="__main__":
     app.debug = True
