@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<h1>Profile Page</h1>
+<h2>Your Profile</h2>
+<table>
+	<tr>
+		<td>Last:</td><td> {{d['last']}}</td>
+	</tr>
+	<tr>
+		<td>First:</td><td> {{d['first']}}</td>
+	</tr>
+</table>
+<h3>Title: {{d.title}}</h3>
+<hr>
+{{d}}
+<ol>
+	{% for key in d %}
+	<li>d[{{key}}] = {{d[key]}}</li>
+	{% endfor %}
+</ol>
+<hr>
+{{l[3]}}
+<hr>
+{{l}}
+<hr>
+<ul>
+	{% for item in l %}
+	<li>{{item}}</li>
+	{% endfor %}
+</ul>

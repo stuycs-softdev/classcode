@@ -19,6 +19,20 @@ def oldabout():
 """
     return page
 
+@app.route("/profile")
+@app.route("/profile/")
+@app.route("/profile/<lastname>")
+@app.route("/profile/<lastname>/<firstname>")
+def profile(lastname="",firstname=""):
+    dict = {'last'  : lastname,
+            'first' : firstname}
+
+    dict['title']="Grand Poobah"
+
+    list = [10,20,"thirty",40,"Fifty"]
+    
+    return render_template("person.html", d =dict ,l = list)
+
 @app.route("/")
 @app.route("/home")
 def home():
@@ -26,11 +40,12 @@ def home():
     page = page + '<button><a href="/about">About</a></button>'
     page = page + "<h2>Welcome</h2>"
     return page
+
 @app.route("/lucky")
 def lucky():
     import random
-    number = random.randrange(1,100)
-    return "<h1>Lucky Number: %d"%(number)
+    n = random.randrange(1,100)
+    return render_template("lucky.html", number = n)
 
 
 if __name__ == "__main__":
