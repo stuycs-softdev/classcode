@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<h1>Hello World</h1>
+
+<img src="/static/thluffy.png">
+<hr>
+{% for item in args %}
+<h2>{{item}} :: {{args[item]}}</h2>
+{%endfor %}
+<hr>
+Out of form: <input type="text" name="outofform">
+<input type="submit" value="out"">
+<hr>
+<form>
+	name: <input type="text" name="name">
+	number: <input type="text" name="number">
+	<input type="submit" name="button" value="ok">
+	<input type="submit" name="button" value="No way">
+</form>
+<hr>
+<form>
+	colr: <input type="text" name="color">
+	size: <input type="text" name="size">
+	<input type="submit" name="button" value="up">
+	<input type="submit" name="button" value="down">
+</form>
+<hr>
