@@ -1,0 +1,25 @@
+<!doctype html>
+
+<h1>Hello World</h1>
+<img src="/static/thluffy.png">
+<hr>
+{% for a in args %}
+<h3>{{a}} : {{args[a]}}</h3>
+{% endfor %}
+<hr>
+outform: <input type="text" name="outform">
+<input type="submit" name="button" value="out">
+<hr>
+<form>
+	name: <input type="text" name="name">
+	age: <input type="text" name="age">
+	<input type="submit" name="button" value="ok">
+	<input type="submit" name="button" value="cancel">
+</form>
+<hr>
+<form>
+	color: <input type="text" name="color">
+	size: <input type="text" name="size">
+	<input type="submit" name="button" value="up">
+	<input type="submit" name="button" value="down">
+</form>
