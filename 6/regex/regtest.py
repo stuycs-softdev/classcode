@@ -1,19 +1,35 @@
 import re
 
 def find_phone(s):
-    expr = "[0-9]{3}-[0-9]{3}-[0-9]{4}"
-    result = re.findall(expr,s);
+    """Returns a list of valid phone numbes from a string
+
+    Args:
+      s: a string
+
+    Return:
+      An empty list or a list of strings each one representing
+      a phone number
+    >>> find_phone("")
+    []
+
+    >>> find_phone("111-111-1111")
+    ['111-111-1111']
+
+    >>> find_phone("stuff 222-222-2222 stuff")
+    ['222-222-2222']
+
+    >>> find_phone("111-111-1111 222-222-2222")
+    ['111-111-1111', '222-222-2222']
+
+    >>> find_phone("111-222-33334")
+    ['111-222-3333']
+    """
+    exp = "[0-9]{3}-[0-9]{3}-[0-9]{4}"
+    result = re.findall(exp,s)
     return result
 
 
-def fp_test1():
-    print "Should print: ['111-222-3333']"
-    print find_phone("111-222-3333")
-
-def fp_test2():
-    print "Should print: []"
-    print find_phone("1d1-222-3333")
-
 if __name__=="__main__":
-    fp_test1()
-    fp_test2()
+    import doctest
+    doctest.testmod()
+
