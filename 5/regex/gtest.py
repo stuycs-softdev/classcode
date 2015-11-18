@@ -11,7 +11,7 @@ print l[0]
 u = urllib2.urlopen(l[0])
 page = u.read()
 #print page
-soup = bs4.BeautifulSoup(page)
+soup = bs4.BeautifulSoup(page,'html')
 raw = soup.get_text()
 #print raw
 text = re.sub("[\t\n ]"," ",raw)
