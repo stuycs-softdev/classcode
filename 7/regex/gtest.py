@@ -10,7 +10,7 @@ for r in results:
 
 url = urllib2.urlopen(rlist[0])
 page = url.read()
-soup = bs4.BeautifulSoup(page,'lxml')
+soup = bs4.BeautifulSoup(page,'html')
 raw = soup.get_text()
 
 text = re.sub("[ \t\n]+"," ",raw)
