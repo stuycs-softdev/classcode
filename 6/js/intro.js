@@ -56,3 +56,41 @@ var stripe = function(){
 		}
 };;
 
+
+var ButtonCallback = function(e){
+		console.log(e);
+		addItem("HELLO");
+};
+var b = document.getElementById("b");
+b.addEventListener('click',ButtonCallback);
+
+var b2Callback = function(e){
+		e.preventDefault();
+		removeItem(0);
+};
+document.getElementById('b2').addEventListener('click',b2Callback);
+
+
+var redCallback = function(e){
+		console.log(this);
+		this.classList.toggle('red');
+};
+
+var addMouseEvents = function(item){
+		item.addEventListener('mouseover',function(e){
+				this.classList.remove('green');
+				this.classList.add('blue');
+		});
+		item.addEventListener('mouseout',function(e){
+				this.classList.remove('blue');
+				this.classList.add('green');
+		});
+
+};
+
+var thelist = document.getElementById("thelist");
+var items = thelist.children;
+for (var i=0; i < items.length; i++){
+		// items[i].addEventListener('click',redCallback);
+		addMouseEvents(items[i]);
+};
