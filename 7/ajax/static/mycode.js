@@ -15,17 +15,39 @@ var printresult = function printresult(d){
 var demo2 = function demo2() {
 
 		console.log("Calling getslow");
-		$.get("/getslow",printresult);
-		console.log("Back from getslow\n\n");
+		$.get("/getslow",function(){
+				console.log("Back from getslow\n\n");
+				console.log("Calling getfast");
+				$.get("/getfast",printresult);
+				console.log("Back from getfast\n\n");
+		});
 
 		
 		console.log("Calling Getstuff");
 		$.get("/getstuff",printresult);
 		console.log("Back from getstuff\n\n");
 
-		console.log("Calling getfast");
-		$.get("/getfast",printresult);
-		console.log("Back from getfast\n\n");
 
 
 };
+
+var testparam = function testparam(){
+
+		$.getJSON("/upcase",{data:'Hello'},function(r){
+				console.log(r);
+				console.log(r.result);
+
+		});
+
+};
+
+
+$("#b").click(function(){
+		var data = $("#data").val();
+		$("#data").val("");
+
+		$.getJSON("/upcase",{data:data},function(r){
+				$("#result").text(r.result);
+				$("#thelist").append($("<li>"+r.result+"</li>"));
+		});
+});
