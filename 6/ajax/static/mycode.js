@@ -22,19 +22,36 @@ var printresult = function printresult(d){
 };
 
 var demo2 = function demo2(){
+
 		console.log("Calling getslow");
-		$.get("/getslow",printresult);
+		$.get("/getslow",function(){
+				console.log("Back from slow");
+				console.log("Calling getfast");
+				$.get("/getfast",printresult);
+				console.log("BACK FROM GETFAST\n");
+		});
 		console.log("BACK FROM GETSLOW\n");
 
 		console.log("Calling getstuff");
 		$.get("/getstuff",printresult);
 		console.log("BACK FROM GETSTUFF\n");
+};
 
-		console.log("Calling getfast");
-		$.get("/getfast",printresult);
-		console.log("BACK FROM GETFAST\n");
-
-
-
+var testparam = function testparam(){
+		$.getJSON("/upcase",{data:'hello'},function(d){
+				console.log(d);
+				console.log(d.result);
+		});
 		
 };
+
+
+$("#b").click(function(){
+		var input = $("#data");
+		var data = input.val();
+		input.val("");
+		$.getJSON("/upcase",{data:data},function(r){
+				$("#result").text(r.result);
+				$("#thelist").append("<li>"+r.result+"</li>");
+		});
+});
